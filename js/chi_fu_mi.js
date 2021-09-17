@@ -13,22 +13,24 @@ var userChoice = prompt("Veuillez choisir entre \"pierre\" \"feuille\" \"ciseaux
 // message de confirmation du choix du candidat
 alert("Vous avez choisi \"" + userChoice + "\".\nC\'est maintenant au tour de l\'ordinateur de jouer.");
 
-// conception du choix de l'ordinateur
-var computerChoice;
-var resultChoice = Math.random();
+// conception de la fonction du choix de l'ordinateur
+var randChoice = Math.random();
+var pcChoice;
 
-if (resultChoice <= 0.33){
-    computerChoice = "pierre";
-    alert("L\'ordinateur a choisi \"" + computerChoice + "\"");
+function computerChoice(randChoice){
+    if (randChoice <= 0.33){
+        return pcChoice = "pierre";        
+    }
+    else if(randChoice > 0.33 && randChoice <= 0.66){
+        return pcChoice = "feuille";
+    }
+    else {
+        return pcChoice = "ciseaux";
+    }
 }
-else if(resultChoice > 0.33 && resultChoice <= 0.66){
-    computerChoice = "feuille";
-    alert("L\'ordinateur a choisi \"" + computerChoice + "\"");
-}
-else {
-    computerChoice = "ciseaux";
-    alert("L\'ordinateur a choisi \"" + computerChoice + "\"");
-}
+
+// affichage de ce que l'ordinateur a choisi
+alert("L\'ordinateur a choisi \"" + computerChoice(randChoice) + "\"")
 
 // comparaison des choix ordi/joueur
 var userGameWin = 0;
