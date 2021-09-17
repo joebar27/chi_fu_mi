@@ -17,27 +17,29 @@ alert("Bienvenue sur le jeu du \"Pierre - Feuille - Ciseaux\"");
 // capture du prénom du candidat avec nombre de caractère mini maxi
 checkNameUser(userName);
 
-// //while (userGameWin < 3 || computerGameWin < 3){
-    
-// capture du choix du candidat et vérification de l'expression entrer
-checkChoiceUser(userChoice);
+do {    
+    // capture du choix du candidat et vérification de l'expression entrer
+    checkChoiceUser(userChoice);
 
-// affichage de ce que l'ordinateur a choisi
-computerChoice(randChoice);
+    // affichage de ce que l'ordinateur a choisi
+    computerChoice(randChoice);
 
-//     // comparaison des choix ordi/joueur et affichage du vainqueur
-//     compareChoice(pcChoice, userChoice);
-//     alert("\rSCORE\n" + userName + " : " + userGameWin + " || Ordinateur : " + computerGameWin)
-// //}
+    // comparaison des choix ordi/joueur, affichage du vainqueur de la manche et incrementation des scores
+    compareChoices(pcChoice, userChoice);
 
-// if ( userGameWin === 3 || computerGameWin === 3){
-//     if (userGameWin === 3){
-//         alert(userName + " vous avez remporté les 3 manches\nFELICITATION !");
-//     }
-//     else {
-//         alert("Désolé c'est l'ordinateur qui a remporté 3 manches")
-//     }
-// }
+    // affichage des scores
+    alert("SCORE :\n" + userName + " : " + userGameWin + " || Ordinateur : " + computerGameWin)
+    console.log("instruction terminé")
+}
+while(userGameWin < 3 && computerGameWin < 3);
+
+if (userGameWin === 3){
+    alert(userName + " vous avez remporté les 3 manches\nFELICITATION !");
+}
+else {
+    alert("Désolé c'est l'ordinateur qui a remporté 3 manches")
+}
+
 
 //---------------------------------CONCEPTION DES FONCTIONS---------------------------------------
 
@@ -97,23 +99,24 @@ function computerChoice(randChoice){
     return pcChoice;
 }
 
-// // fonction de comparaison des choix ordi/joueur
+// fonction de comparaison des choix ordi/joueur ++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function compareChoice(pcChoice, userChoice){
-//     // comparaison de match nul
-//     if (pcChoice === checkChoiceUser(userChoice)){
-//         alert("Il y a match nul");
-//     }
-//     // comparaison des possibilités de gain de l'ordinateur
-//     else if ((pcChoice === "pierre" && checkChoiceUser(userChoice) === "ciseaux") 
-//             || (pcChoice === "feuille" && checkChoiceUser(userChoice) === "pierre") 
-//             || (pcChoice === "ciseaux" && checkChoiceUser(userChoice) === "feuille")){        
-//         alert("Vous avez perdu cette manche");
-//         return computerGameWin += 1;
-//     }
-//     //  sinon gain du joueur
-//     else{        
-//         alert("Vous avez gagné 1 manche");
-//         return userGameWin += 1;
-//     }
-//  }
+function compareChoices(pcChoice, choiceChecked){
+    console.log("fonction active")
+    // comparaison de match nul
+    if (pcChoice === choiceChecked){
+        alert("Il y a match nul");
+    }
+    // comparaison des possibilités de gain de l'ordinateur
+    else if ((pcChoice === "pierre" && choiceChecked === "ciseaux") 
+            || (pcChoice === "feuille" && choiceChecked === "pierre") 
+            || (pcChoice === "ciseaux" && choiceChecked === "feuille")){
+            alert("Vous avez perdu cette manche");
+            return computerGameWin += 1;
+    }
+    //  sinon gain du joueur
+    else{        
+        alert("Vous avez gagné 1 manche");
+        return userGameWin += 1;
+    }
+ }
