@@ -14,14 +14,39 @@ var userChoice = prompt("Veuillez choisir entre \"pierre\" \"feuille\" \"ciseaux
 alert("Vous avez choisi \"" + userChoice + "\".\nC\'est maintenant au tour de l\'ordinateur de jouer.");
 
 // conception du choix de l'ordinateur
-var computerChoice = Math.random();
+var computerChoice;
+var resultChoice = Math.random();
 
-if (computerChoice <= 0.33){
-    alert("L\'ordinateur a choisi \"Pierre\"")
+if (resultChoice <= 0.33){
+    computerChoice = "pierre";
+    alert("L\'ordinateur a choisi \"" + computerChoice + "\"");
 }
-else if(computerChoice > 0.33 && computerChoice <= 0.66){
-    alert("L\'ordinateur a choisi \"Feuille\"")
+else if(resultChoice > 0.33 && resultChoice <= 0.66){
+    computerChoice = "feuille";
+    alert("L\'ordinateur a choisi \"" + computerChoice + "\"");
 }
 else {
-    alert("L\'ordinateur a choisi \"Ciseaux\"")
+    computerChoice = "ciseaux";
+    alert("L\'ordinateur a choisi \"" + computerChoice + "\"");
+}
+
+// comparaison des choix ordi/joueur
+var userGameWin = 0;
+var computerGameWin = 0;
+
+// comparaison de match nul
+if (computerChoice === userChoice.toLocaleLowerCase()){
+    alert("Il y a match nul");
+}
+// comparaison des possibilités de gain de l'ordinateur
+else if ((computerChoice === "pierre" && userChoice.toLocaleLowerCase() === "ciseaux") 
+        || (computerChoice === "feuille" && userChoice.toLocaleLowerCase() === "pierre") 
+        || (computerChoice === "ciseaux" && userChoice.toLocaleLowerCase() === "feuille")){
+    computerGameWin += 1;
+    alert("Vous avez perdu");
+}
+//  sinon gain du joueur
+else{
+    userGameWin += 1;
+    alert("Vous avez gagné 1 manche");
 }
