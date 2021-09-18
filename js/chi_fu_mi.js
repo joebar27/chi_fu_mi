@@ -34,7 +34,7 @@ do {
     while(userGameWin < 3 && computerGameWin < 3);
 
     if (userGameWin === 3){
-        alert(userName + " vous avez remporté les 3 manches\nFELICITATION !");
+        alert(userName + " vous avez remporté les 3 manches\n! FELICITATION !");
     }
     else {
         alert("Désolé c'est l'ordinateur qui a remporté les 3 manches")
