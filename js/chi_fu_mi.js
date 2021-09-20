@@ -9,42 +9,6 @@ var userGameWin = 0;
 var computerGameWin = 0;
 var newParty = "non";
 
-//---------------------------------DEROULEMENT DU JEU---------------------------------------
-
-// affichage du message de bienvenue
-alert("Bienvenue sur le jeu du \"Pierre - Feuille - Ciseaux\"");
-
-// capture du prénom du candidat avec nombre de caractère mini maxi
-checkNameUser(userName);
-do {
-    do {    
-        // capture du choix du candidat et vérification de l'expression entrer
-        checkChoiceUser(userChoice);
-
-        // affichage de ce que l'ordinateur a choisi
-        computerChoice(randChoice);
-
-        // comparaison des choix ordi/joueur, affichage du vainqueur de la manche et incrementation des scores
-        compareChoices(pcChoice, choiceChecked);
-
-        // affichage des scores
-        alert("SCORE :\n" + userName + " : " + userGameWin + " || Ordinateur : " + computerGameWin)
-        //console.log("instruction terminé")
-    }
-    while(userGameWin < 3 && computerGameWin < 3);
-
-    if (userGameWin === 3){
-        alert(userName + " vous avez remporté les 3 manches\n! FELICITATION !");
-    }
-    else {
-        alert("Désolé c'est l'ordinateur qui a remporté les 3 manches")
-    }
-    userGameWin = 0;
-    computerGameWin = 0;
-    newParty = prompt("Si vous souhaitez faire une nouvelle partie tapez \"oui\"")
-}
-while(newParty.toLocaleLowerCase() === "oui");
-
 //---------------------------------CONCEPTION DES FONCTIONS---------------------------------------
 
 // fonction de verification du prénom du joueur +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -117,3 +81,39 @@ function compareChoices(pcChoice, choiceChecked){
         return userGameWin += 1;
     }
  }
+
+//---------------------------------DEROULEMENT DU JEU---------------------------------------
+
+// affichage du message de bienvenue
+alert("Bienvenue sur le jeu du \"Pierre - Feuille - Ciseaux\"");
+
+// capture du prénom du candidat avec nombre de caractère mini maxi
+checkNameUser(userName);
+do {
+    do {    
+        // capture du choix du candidat et vérification de l'expression entrer
+        checkChoiceUser(userChoice);
+
+        // affichage de ce que l'ordinateur a choisi
+        computerChoice(randChoice);
+
+        // comparaison des choix ordi/joueur, affichage du vainqueur de la manche et incrementation des scores
+        compareChoices(pcChoice, choiceChecked);
+
+        // affichage des scores
+        alert("SCORE :\n" + userName + " : " + userGameWin + " || Ordinateur : " + computerGameWin)
+        //console.log("instruction terminé")
+    }
+    while(userGameWin < 3 && computerGameWin < 3);
+
+    if (userGameWin === 3){
+        alert(userName + " vous avez remporté les 3 manches\n! FELICITATION !");
+    }
+    else {
+        alert("Désolé c'est l'ordinateur qui a remporté les 3 manches")
+    }
+    userGameWin = 0;
+    computerGameWin = 0;
+    newParty = prompt("Si vous souhaitez faire une nouvelle partie tapez \"oui\"")
+}
+while(newParty.toLocaleLowerCase() === "oui");
